@@ -1,0 +1,20 @@
+app: reactjs-test-app
+env: correct-night
+namespace: reactjs
+deploy:
+  event: push
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.64.0
+values:
+  containerPort: 80
+  gitRepository: elyesjabri/reactjs-test-app
+  gitSha: '{{ .SHA }}'
+  image:
+    repository: 127.0.0.1:32447/reactjs-test-app
+    tag: '{{ .SHA }}'
+  imagePullSecrets: []
+  replicas: 1
+  resources:
+    ignoreLimits: true
